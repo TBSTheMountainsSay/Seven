@@ -10,8 +10,16 @@
 
   .img{
     overflow: hidden;
-    max-height: 15rem;
+    max-height: 40rem;
     width: auto;
     height: 95%;
+  }
+}
+
+@media (max-width: 700px) {
+  .wrapper{
+    .img{
+      max-height: 15rem;
+    }
   }
 }

@@ -32,6 +32,7 @@ const Card: React.FC<TCardProps> = ({}) => {
       <img
         src={require(`src/assets/${selectedImage}.png`)}
         className={styles.img}
+        alt={`${selectedImage}.png`}
       />
     </div>
   );

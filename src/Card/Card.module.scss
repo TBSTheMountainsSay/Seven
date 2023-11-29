@@ -1,25 +1,38 @@
-.wrapper{
+.wrapper {
   display: flex;
   width: 100%;
   height: 100vh;
   align-items: center;
   justify-content: center;
-  background-image: url("../assets/wood.jpg");
+  background-image: url('../assets/wood.jpg');
   background-repeat: no-repeat;
-  background-size:  100% 100%;
+  background-size: 100% 100%;
+  position: relative;
 
-  .img{
+  .img {
     overflow: hidden;
-    max-height: 40rem;
-    width: auto;
-    height: 95%;
+    max-width: 30rem;
+    height: auto;
+    width: 90%;
   }
-}
-
-@media (max-width: 700px) {
-  .wrapper{
-    .img{
-      max-height: 15rem;
-    }
+  .isCardsEmpty_message {
+    color: #e6e6e6;
+    font-weight: 400;
+    font-size: 3rem;
+    text-shadow: 5px 2px 5px #321d18;
+  }
+  .info_button {
+    position: absolute;
+    width: 3rem;
+    fill: #e6e6e6;
+    top: -0.7rem;
+    right: 1rem;
+    transition: 0.3s;
+  }
+  .info_button:hover {
+    fill: #b3b3b3;
+  }
+  .info {
+    position: absolute;
   }
 }

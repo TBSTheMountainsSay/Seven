@@ -1,39 +1,78 @@
 import React, { useState } from 'react';
 import styles from './Card.module.scss';
+import SvgSelector from '../SvgSelector';
+import { clsx } from 'clsx';
+import Info from '../Info/Info';
 
 type TCardProps = {};
 
-const generateCards = (array: number[]) => {
-  array.splice(0, array.length);
+const generateCards = () => {
+  const array: number[] = [];
   for (let i = 1; i <= 52; i++) {
     array.push(i);
   }
+  return array;
 };
 
-const allCards: number[] = [];
-
-generateCards(allCards);
-
 const Card: React.FC<TCardProps> = ({}) => {
-  const [selectedImage, setSelectedImage] = useState<number>(2);
+  const [cards, setCards] = useState(generateCards());
+  const [selectedCard, setSelectedCard] = useState<number>(2);
+  const [isCardsEmpty, setIsCardsEmpty] = useState<boolean>(false);
+  const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false);
 
-  const getRandomNumber = () => {
-    return Number(Math.floor(Math.random() * allCards.length) + 1);
+  const getRandomCard = (arr: number[]): number => {
+    const randomIndex = Math.floor(Math.random() * arr.length);
+    return arr[randomIndex];
   };
 
-  const handlePress = () => {
-    allCards.splice(selectedImage - 1, 1);
-    setSelectedImage(getRandomNumber());
-    if (allCards.length === 0) generateCards(allCards);
+  const handlePressCard = () => {
+    const newCards = cards.filter((item: number) => item !== selectedCard);
+    setCards(newCards);
+    setSelectedCard(getRandomCard(newCards));
+    if (newCards.length === 0) {
+      setCards(generateCards());
+      setSelectedCard(getRandomCard(cards));
+      setIsCardsEmpty(true);
+    }
+  };
+
+  const handlePressMessage = () => {
+    setIsCardsEmpty(false);
+  };
+
+  const handlePressInfo = () => {
+    setIsInfoVisible(!isInfoVisible);
   };
 
   return (
-    <div className={styles.wrapper} onClick={handlePress}>
-      <img
-        src={require(`src/assets/${selectedImage}.png`)}
-        className={styles.img}
-        alt={`${selectedImage}.png`}
-      />
+    <div className={styles.wrapper}>
+      <div onClick={handlePressInfo}>
+        <SvgSelector id={'info'} className={styles.info_button} />
+      </div>
+      {/*<div*/}
+      {/*  className={clsx(styles.info, {*/}
+      {/*    [styles.openInfo]: isInfoVisible,*/}
+      {/*    [styles.openClose]: !isInfoVisible,*/}
+      {/*  })}*/}
+      {/*>*/}
+      {/*  <Info onClick={handlePressInfo} />*/}
+      {/*</div>*/}
+
+      {isCardsEmpty ? (
+        <div
+          className={styles.isCardsEmpty_message}
+          onClick={handlePressMessage}
+        >
+          Колода закончилась. Желаете продолжить?
+        </div>
+      ) : (
+        <img
+          src={require(`src/assets/${selectedCard}.png`)}
+          className={styles.img}
+          alt={`${selectedCard}.png`}
+          onClick={handlePressCard}
+        />
+      )}
     </div>
   );
 };

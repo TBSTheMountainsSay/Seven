@@ -49,21 +49,21 @@ const Card: React.FC<TCardProps> = ({}) => {
       <div onClick={handlePressInfo}>
         <SvgSelector id={'info'} className={styles.info_button} />
       </div>
-      {/*<div*/}
-      {/*  className={clsx(styles.info, {*/}
-      {/*    [styles.openInfo]: isInfoVisible,*/}
-      {/*    [styles.openClose]: !isInfoVisible,*/}
-      {/*  })}*/}
-      {/*>*/}
-      {/*  <Info onClick={handlePressInfo} />*/}
-      {/*</div>*/}
+      <div
+        className={clsx(styles.info, {
+          [styles.openInfo]: isInfoVisible,
+          [styles.closeInfo]: !isInfoVisible,
+        })}
+      >
+        <Info onClick={handlePressInfo} />
+      </div>
 
       {isCardsEmpty ? (
         <div
           className={styles.isCardsEmpty_message}
           onClick={handlePressMessage}
         >
-          Колода закончилась. Желаете продолжить?
+          Колода закончилась. Начать заново?
         </div>
       ) : (
         <img

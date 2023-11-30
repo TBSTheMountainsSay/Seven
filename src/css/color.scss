@@ -1,0 +1,11 @@
+$palette: (
+    brown: #321d18,
+    bone: #e6e6e6,
+    bone-hover: #b3b3b3,
+);
+
+$light-theme: (
+    def-dark: map_get($palette, brown),
+    def-light: map_get($palette, bone),
+    def-light-hover: map_get($palette, bone-hover),
+);

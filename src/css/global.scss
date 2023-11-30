@@ -1,0 +1,37 @@
+@import 'color';
+
+*,
+*:after,
+*:before {
+  font-size: 10px;
+  font-family: Roboto, sans-serif;
+}
+
+*::-webkit-scrollbar {
+    width: 1rem;
+}
+
+*::-webkit-scrollbar-track {
+    background: var(--def-dark);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--def-light);
+    border-radius: 20px;
+    border: 3px solid var(--def-dark);
+}
+
+
+:root {
+  @each $name, $color in $light-theme {
+    --#{$name}: #{$color};
+  }
+  color-scheme: light;
+}
+
+:root[color-scheme='light'] {
+  @each $name, $color in $light-theme {
+    --#{$name}: #{$color};
+  }
+  color-scheme: light;
+}

@@ -70,7 +70,7 @@ const Card: React.FC<TCardProps> = ({}) => {
         <TransitionGroup component={React.Fragment}>
           <CSSTransition
             key={selectedCard}
-            timeout={{ enter: 750, exit: 500 }}
+            timeout={{ enter: 800, exit: 500 }}
             classNames={'item'}
           >
             <div className={'item'}>

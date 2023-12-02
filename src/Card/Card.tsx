@@ -68,7 +68,11 @@ const Card: React.FC<TCardProps> = ({}) => {
         </div>
       ) : (
         <TransitionGroup component={React.Fragment}>
-          <CSSTransition key={selectedCard} timeout={500} classNames={'item'}>
+          <CSSTransition
+            key={selectedCard}
+            timeout={{ enter: 750, exit: 500 }}
+            classNames={'item'}
+          >
             <div className={'item'}>
               <img
                 src={require(`src/assets/${selectedCard}.png`)}

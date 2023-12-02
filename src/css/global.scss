@@ -46,10 +46,10 @@ body {
 }
 .item-enter-active {
   img {
-    transition: 500ms ease-in-out;
+    transition: 500ms ease-in-out 250ms;
     transform: rotate(0deg);
   }
-  transition: 500ms ease-in-out;
+  transition: 500ms ease-in-out 250ms;
   transform: translateX(0);
 }
 .item-exit {

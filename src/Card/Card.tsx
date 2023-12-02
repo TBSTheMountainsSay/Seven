@@ -3,6 +3,7 @@ import styles from './Card.module.scss';
 import SvgSelector from '../SvgSelector';
 import { clsx } from 'clsx';
 import Info from '../Info/Info';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 type TCardProps = {};
 
@@ -66,12 +67,18 @@ const Card: React.FC<TCardProps> = ({}) => {
           Колода закончилась. Начать заново?
         </div>
       ) : (
-        <img
-          src={require(`src/assets/${selectedCard}.png`)}
-          className={styles.img}
-          alt={`${selectedCard}.png`}
-          onClick={handlePressCard}
-        />
+        <TransitionGroup component={React.Fragment}>
+          <CSSTransition key={selectedCard} timeout={500} classNames={'item'}>
+            <div className={'item'}>
+              <img
+                src={require(`src/assets/${selectedCard}.png`)}
+                className={styles.img}
+                alt={`${selectedCard}.png`}
+                onClick={handlePressCard}
+              />
+            </div>
+          </CSSTransition>
+        </TransitionGroup>
       )}
     </div>
   );

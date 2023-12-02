@@ -13,6 +13,7 @@
     max-width: 40rem;
     height: auto;
     width: 90%;
+    pointer-events: auto;
   }
   .isCardsEmpty_message {
     cursor: pointer;
@@ -38,7 +39,7 @@
     height: 100vh;
     width: 75%;
     top: 0;
-    z-index: 2;
+    z-index: 5;
     overflow-y: auto;
     overflow-x: hidden;
   }

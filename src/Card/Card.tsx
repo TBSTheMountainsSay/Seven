@@ -15,16 +15,17 @@ const generateCards = () => {
   return array;
 };
 
+const getRandomCard = (arr: number[]): number => {
+  const randomIndex = Math.floor(Math.random() * arr.length);
+  return arr[randomIndex];
+};
+
 const Card: React.FC<TCardProps> = ({}) => {
   const [cards, setCards] = useState(generateCards());
-  const [selectedCard, setSelectedCard] = useState<number>(2);
+  const [selectedCard, setSelectedCard] = useState<number>(getRandomCard(cards));
   const [isCardsEmpty, setIsCardsEmpty] = useState<boolean>(false);
   const [isInfoVisible, setIsInfoVisible] = useState<boolean>(false);
-
-  const getRandomCard = (arr: number[]): number => {
-    const randomIndex = Math.floor(Math.random() * arr.length);
-    return arr[randomIndex];
-  };
+  const [isStartOfGame, setIsStartOfGame] = useState<boolean>(true);
 
   const handlePressCard = () => {
     const newCards = cards.filter((item: number) => item !== selectedCard);
@@ -39,6 +40,7 @@ const Card: React.FC<TCardProps> = ({}) => {
 
   const handlePressMessage = () => {
     setIsCardsEmpty(false);
+    setIsStartOfGame(false);
   };
 
   const handlePressInfo = () => {
@@ -59,12 +61,12 @@ const Card: React.FC<TCardProps> = ({}) => {
         <Info onClick={handlePressInfo} />
       </div>
 
-      {isCardsEmpty ? (
+      {isStartOfGame || isCardsEmpty ? (
         <div
           className={styles.isCardsEmpty_message}
           onClick={handlePressMessage}
         >
-          Колода закончилась. Начать заново?
+          {isStartOfGame ? "Вы готовы начать игру?" : "Колода закончилась. Начать заново?"}
         </div>
       ) : (
         <TransitionGroup component={React.Fragment}>

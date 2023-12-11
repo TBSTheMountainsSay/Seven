@@ -66,7 +66,7 @@ const Card: React.FC<TCardProps> = ({}) => {
           className={styles.isCardsEmpty_message}
           onClick={handlePressMessage}
         >
-          {isStartOfGame ? "Вы готовы начать игру?" : "Колода закончилась. Начать заново?"}
+          {isStartOfGame ? "Нажмите, чтобы начать игру" : "Колода закончилась. Начать заново?"}
         </div>
       ) : (
         <TransitionGroup component={React.Fragment}>

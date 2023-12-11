@@ -64,6 +64,7 @@ const Info: React.FC<TInfoProps> = ({ onClick }) => {
         title={'Благодарность'}
         text={"Надеюсь, игра вам понравилась, спасибо за использование!)"}
         img={true}
+        src={"https://www.tinkoff.ru/rm/rogotnev.ivan1/286Sz85854/"}
       />
     </div>
   );
